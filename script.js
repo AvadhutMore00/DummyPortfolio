@@ -1,4 +1,5 @@
 
+    
     document.addEventListener('DOMContentLoaded', () => {
     const typingTextElement = document.getElementById('typing-text');
     // Get the lines of code from the data-lines attribute

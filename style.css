@@ -30,59 +30,99 @@ body {
     color: var(--text-color);
 }
 
+html, body {
+  overflow: scroll;          /* allow scrolling */
+  scrollbar-width: none;     /* Firefox */
+  -ms-overflow-style: none;  /* IE & Edge */
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;             /* Chrome, Safari */
+}
+
 
 /* ? -----------------------------------   NAV BAR -------------------------------  */
 
 nav {
-    width: 100%;
-    padding: 10px 0;
-    background: transparent;
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--text-color);
-    position: fixed;
-    z-index: 1000;
-    .nav-bar {
-        /* width: 80%; */
-        margin: auto;
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        .logo h2 {
-            font-size: 30px;
-            letter-spacing: 1.5px;
-            font-weight: 900;
-            background: linear-gradient(to right, #bc4e9c, #f80759);
-            background-clip: text;
-            color: transparent;
-        }
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 40px;
-            a {
-                text-decoration: none;
-                color: var(--text-color);
-                font-weight: 500;
-                &:hover {
-                    color: #00bcd4;
-                }
-            }
-        }
-        .nav-btn {
-            .btn {
-                background: linear-gradient(to right, #00b4db, #0083b0);
-                color: #fff;
-                margin-left: 12rem;
-                padding: 10px 20px;
-                border-radius: 30px;
-                text-decoration: none;
-                transition: background 0.3s ease;
-                &:hover {
-                    background: linear-gradient( to right, #667db6, #0082c8, #0082c8, #667db6);
-                }
-            }
-        }
+  width: 100%;
+  padding: 10px 0;
+  background: transparent;
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgb(73, 104, 101);
+  position: fixed;
+  z-index: 1000;
+
+  .nav-bar {
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    .logo h2 {
+      font-size: 30px;
+      letter-spacing: 1.5px;
+      font-weight: 900;
+      background: linear-gradient(to right, #bc4e9c, #f80759);
+      background-clip: text;
+      color: transparent;
     }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+
+      > a {
+        position: relative;
+        text-decoration: none;
+        color: var(--text-color);
+        font-weight: 500;
+        padding-bottom: 4px;
+
+        &::after {
+          content: "";
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          width: 0;
+          height: 2px;
+          background-color: #a7f5ff;
+          transition: width 0.3s ease;
+        }
+
+        &:hover::after {
+          width: 100%;
+        }
+
+        &.active::after {
+          width: 100%;
+        }
+      }
+    }
+
+    .nav-btn {
+      .btn {
+        background: linear-gradient(to right, #00b4db, #0083b0);
+        color: #fff;
+        margin-left: 12rem;
+        padding: 10px 20px;
+        border-radius: 30px;
+        text-decoration: none;
+        transition: background 0.3s ease;
+
+        &:hover {
+          background: linear-gradient(
+            to right,
+            #667db6,
+            #0082c8,
+            #0082c8,
+            #667db6
+          );
+        }
+      }
+    }
+  }
 }
 
 
@@ -289,14 +329,16 @@ nav {
             }
             .btn {
                 display: inline-block;
-                padding: 13px 15px;
+                padding: 10px 15px;
                 background: linear-gradient(to right, #5433ff, #20bdff, #a5fecb);
                 margin: 15px 20px 0 0;
-                font-size: 18px;
+                font-size: 15px;
                 color: #fff;
                 text-decoration: none;
-                border-radius: 20px;
+                border-radius: 30px;
                 transition: background 0.3s ease;
+
+                
                 &:hover {
                     background: linear-gradient(to right, #77a1d3, #79cbca, #e684ae);
                 }
@@ -747,7 +789,7 @@ nav {
 .experience-content {
     flex: 1;
     text-align: right;
-    max-width: 550px;
+    max-width: 570px;
     background-color: #6860608a;
     border: 1px solid black;
     border-radius: 10px;
@@ -786,7 +828,7 @@ nav {
 
 .experience-content h2 {
     font-size: 24px;
-    color: #4d4c4c;
+    color: #d8d4d4;
     margin-bottom: 8px;
 }
 
@@ -1375,6 +1417,7 @@ footer {
     border-radius: 50%;
     transition: 0.3s;
     position: relative;
+    text-decoration: none;
 }
 
 .social-icons a:hover {
@@ -1382,6 +1425,26 @@ footer {
     /* LinkedIn blue */
     transform: translateY(-5px);
     box-shadow: 0 5px 20px rgba(0, 119, 181, 0.4);
+}
+
+.social-icons #GitHub:hover
+{
+    color: #151616;
+}
+
+.social-icons #Instagram:hover
+{
+    color: #f7643f;
+}
+
+.social-icons #LinkedIn:hover
+{
+    color: #9aceeb;
+}
+
+.social-icons #WhatsApp:hover
+{
+    color: #14dd7f;
 }
 
 .footer-bottom {
